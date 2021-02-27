@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADOFAIMagicShapeGUI", "ADOFAIMagicShapeGUI.csproj", "{E14442A8-EC11-4CA8-B15C-F52E5CC6596B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E14442A8-EC11-4CA8-B15C-F52E5CC6596B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E14442A8-EC11-4CA8-B15C-F52E5CC6596B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E14442A8-EC11-4CA8-B15C-F52E5CC6596B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E14442A8-EC11-4CA8-B15C-F52E5CC6596B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03591871-F390-4534-9160-A2B1F08EC882}
+	EndGlobalSection
+EndGlobal
