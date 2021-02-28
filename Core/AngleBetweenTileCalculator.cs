@@ -59,7 +59,7 @@ namespace ADOFAIMagicShape
                 });
 
                 // 탭드타일 추가 계산
-                if (floorEvent.IsTapped)
+                if (floorEvent.IsTabbed)
                 {
                     lastAngle = angle + 180;
                 }

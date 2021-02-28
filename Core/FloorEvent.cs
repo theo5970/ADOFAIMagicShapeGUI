@@ -4,7 +4,7 @@
     {
         public int Floor;
         public int Angle;
-        public bool IsTapped;
+        public bool IsTabbed;
         public bool HasTwirl;
         public bool Ignore;
     }

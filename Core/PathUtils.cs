@@ -4,7 +4,7 @@ namespace ADOFAIMagicShape
 {
     public static class PathUtils
     {
-        public static int GetPathAngle(char path)
+        public static int GetAbsoluteAngle(char path)
         {
             switch (path)
             {

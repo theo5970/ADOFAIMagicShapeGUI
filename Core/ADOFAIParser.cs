@@ -38,7 +38,7 @@ namespace ADOFAIMagicShape
                 char path = pathData[i];
                 bool isTapped = false;
 
-                int angle = PathUtils.GetPathAngle(path);
+                int angle = PathUtils.GetAbsoluteAngle(path);
                 if (i < pathData.Length - 1 && pathData[i + 1] == '!')
                 {
                     isTapped = true;
@@ -49,7 +49,7 @@ namespace ADOFAIMagicShape
                 {
                     Floor = i + 1,
                     Angle = angle,
-                    IsTapped = isTapped,
+                    IsTabbed = isTapped,
                     HasTwirl = false
                 });
 
