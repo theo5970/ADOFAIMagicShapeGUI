@@ -7,7 +7,7 @@ namespace ADOFAIMagicShape
 {
     public static class ADOFAIParser
     {
-        public static ParseResult Parse(string filePath)
+        public static ParseResult Parse(string filePath, bool ignoreTwirls = false)
         {
             List<FloorEvent> events = new List<FloorEvent>();
             JObject levelObj;
@@ -21,8 +21,15 @@ namespace ADOFAIMagicShape
             levelObj = JObject.Parse(builder.ToString());
 
             string pathData = levelObj["pathData"].Value<string>();
+            JArray actions = levelObj["actions"] as JArray;
+
+            if (ignoreTwirls)
+            {
+                RemoveTwirlEvents(actions);
+            }
+
             ParsePathData(pathData, events);
-            SolveTwirlEvents(levelObj, events);
+            SolveTwirlEvents(actions, events);
 
             return new ParseResult
             {
@@ -65,9 +72,24 @@ namespace ADOFAIMagicShape
             }
         }
 
-        private static void SolveTwirlEvents(JObject levelObj, List<FloorEvent> output)
+
+        private static void RemoveTwirlEvents(JArray actions)
         {
-            JArray actions = levelObj["actions"] as JArray;
+            for (int i = 0; i < actions.Count; i++)
+            {
+                JObject actionObj = actions[i] as JObject;
+                string type = actionObj["eventType"].Value<string>();
+                if (type == "Twirl")
+                {
+                    System.Diagnostics.Debug.WriteLine("Twirl 이벤트 제거됨.");
+                    actions.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
+        private static void SolveTwirlEvents(JArray actions, List<FloorEvent> output)
+        {
 
             foreach (var action in actions)
             {

@@ -19,28 +19,16 @@ namespace ADOFAIMagicShape
             UseBpm = false;
         }
 
-        public void RemoveUselessEvents(JArray actions)
+        private void RemoveSpeedEvents(JArray actions)
         {
             for (int i = 0; i < actions.Count; i++)
             {
                 JObject actionObj = actions[i] as JObject;
                 string type = actionObj["eventType"].Value<string>();
 
-                bool shouldRemoved = false;
                 if (type == "SetSpeed")
                 {
-                    shouldRemoved = true;
-                }
-                else if (Mode != TwirlMode.Default)
-                {
-                    if (type == "Twirl")
-                    {
-                        shouldRemoved = true;
-                    }
-                }
-
-                if (shouldRemoved)
-                {
+                    System.Diagnostics.Debug.WriteLine("SetSpeed 이벤트 제거됨.");
                     actions.RemoveAt(i);
                     i--;
                 }
@@ -50,12 +38,12 @@ namespace ADOFAIMagicShape
         public void Build(JObject levelObj)
         {
             JArray actions = levelObj["actions"] as JArray;
-            RemoveUselessEvents(actions);
-
             if (TargetBpm == 0)
             {
                 throw new Exception("TargetBpm을 설정해주세요!");
             }
+
+            RemoveSpeedEvents(actions);
 
             float lastSpeed = 1;
             bool twirlFlag = false;
